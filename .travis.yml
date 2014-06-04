@@ -9,6 +9,10 @@ os:
 before_install:
     - sudo apt-get install cmake
     - git submodule update
+    - cd ltp
+    - ./configure
+    - make
+    - cd ..
 
 install:
     - cmake -DLTP_HOME=`pwd`/ltp/ .
