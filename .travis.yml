@@ -1,0 +1,20 @@
+language:
+    - cpp
+    - java
+
+os:
+    - linux
+    - osx
+
+before_install:
+    - sudo apt-get install cmake
+    - git submodule update
+
+install:
+    - cmake -DLTP_HOME=ltp/ .
+    - make
+    - ant
+    - export LD_LIBRARY_PATH=LD_LIBRARY_PATH:ltp
+
+script:
+    - java
