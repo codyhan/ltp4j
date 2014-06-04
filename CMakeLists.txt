@@ -2,6 +2,7 @@ cmake_minimum_required (VERSION 2.8.0)
 project ("ltp4j")
 
 set (LTP_HOME "/path/to/your/ltp/" CACHE STRING "Use to specified ltp path")
+message (STATUS ${LTP_HOME})
 set (LIBRARY_OUTPUT_PATH    ${PROJECT_SOURCE_DIR}/libs)
 set (JNI_SOURCE_DIR         ${PROJECT_SOURCE_DIR}/jni)
 

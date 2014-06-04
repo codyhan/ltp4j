@@ -14,7 +14,8 @@ install:
     - cmake -DLTP_HOME=ltp/ .
     - make
     - ant
-    - export LD_LIBRARY_PATH=LD_LIBRARY_PATH:ltp
+    - export LD_LIBRARY_PATH=LD_LIBRARY_PATH:`pwd`/libs/:`pwd`/ltp/lib
 
 script:
-    - java
+    - javac -cp "output/jar/ltp4j.jar" examples/Test.java
+    - java -cp "output/jar/ltp4j.jar:examples" Test -h
