@@ -11,7 +11,7 @@ before_install:
     - git submodule update
 
 install:
-    - cmake -DLTP_HOME=ltp/ .
+    - cmake -DLTP_HOME=`pwd`/ltp/ .
     - make
     - ant
     - export LD_LIBRARY_PATH=LD_LIBRARY_PATH:`pwd`/libs/:`pwd`/ltp/lib
