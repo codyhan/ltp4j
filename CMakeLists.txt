@@ -1,6 +1,7 @@
 cmake_minimum_required (VERSION 2.8.0)
 project ("ltp4j")
 
+find_package(JNI)
 set (LTP_HOME "/path/to/your/ltp/" CACHE STRING "Use to specified ltp path")
 set (LIBRARY_OUTPUT_PATH    ${PROJECT_SOURCE_DIR}/libs)
 set (JNI_SOURCE_DIR         ${PROJECT_SOURCE_DIR}/jni)
@@ -8,13 +9,13 @@ set (JNI_SOURCE_DIR         ${PROJECT_SOURCE_DIR}/jni)
 include_directories (
     ${JNI_SOURCE_DIR}
     ${LTP_HOME}/include
-    $ENV{JAVA_HOME}/include)
+    ${JNI_INCLUDE_DIRS})
 
-if(WIN32)
-    include_directories ($ENV{JAVA_HOME}/include/win32)
-else(WIN32)
-    include_directories ($ENV{JAVA_HOME}/include/linux)
-endif(WIN32)
+#if(WIN32)
+#    include_directories ($ENV{JAVA_HOME}/include/win32)
+#else(WIN32)
+#    include_directories ($ENV{JAVA_HOME}/include/linux)
+#endif(WIN32)
 
 if(WIN32)
     link_directories (${LTP_HOME}/lib/Debug)
@@ -23,7 +24,7 @@ else(WIN32)
 endif(WIN32)
 
 add_library (split_sentence_jni SHARED
-${JNI_SOURCE_DIR}/split_sentence_jni.cpp)
+    ${JNI_SOURCE_DIR}/split_sentence_jni.cpp)
 target_link_libraries (split_sentence_jni splitsnt)
 
 add_library (segmentor_jni SHARED ${JNI_SOURCE_DIR}/segment_jni.cpp)
