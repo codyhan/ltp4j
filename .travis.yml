@@ -22,4 +22,4 @@ install:
 
 script:
     - javac -cp "output/jar/ltp4j.jar" examples/Test.java
-    - echo "中国进出口银行与中国银行加强合作" | java -cp "output/jar/ltp4j.jar:examples" Test --segment-model=ltp_data/cws.model --postag-model=ltp_data/pos.model --ner-model=ltp_data/ner.model --parser-model=ltp_data/parser.model --srl-dir=ltp_data/srl/
+    - cat examples/example | java -cp "output/jar/ltp4j.jar:examples" Test --segment-model=ltp_data/cws.model --postag-model=ltp_data/pos.model --ner-model=ltp_data/ner.model --parser-model=ltp_data/parser.model --srl-dir=ltp_data/srl/
