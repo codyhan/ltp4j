@@ -17,6 +17,10 @@ include_directories (
 #    include_directories ($ENV{JAVA_HOME}/include/linux)
 #endif(WIN32)
 
+if(APPLE)
+    set(CMAKE_CXX_FLAGS "-stdlib=libstdc++")
+endif(APPLE)
+
 if(WIN32)
     link_directories (${LTP_HOME}/lib/Debug)
 else(WIN32)
