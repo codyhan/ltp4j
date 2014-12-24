@@ -212,7 +212,7 @@ public class TestSegment {
 
     String sent = "我是中国人";
     List<String> words = new ArrayList<String>();
-    int size = Segmentor.Segment(sent,words);
+    int size = Segmentor.segment(sent,words);
 
     for(int i = 0; i<size; i++) {
       System.out.print(words.get(i));
@@ -297,7 +297,7 @@ public class TestPostag {
     words.add("中国"); words.add("人");
     List<String> postags= new ArrayList<String>();
 
-    int size = Postagger.Postag(words,postags);
+    int size = Postagger.postag(words,postags);
     for(int i = 0; i < size; i++) {
       System.out.print(words.get(i)+"_"+postags.get(i));
       if(i==size-1) {
