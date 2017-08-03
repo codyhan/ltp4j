@@ -1,5 +1,5 @@
 #include "edu_hit_ir_ltp4j_SRL.h"
-#include "ltp/SRL_DLL.h"
+#include "ltp/srl_dll.h"
 #include "string_to_jstring.hpp"
 #include <vector>
 #include <string>
@@ -9,7 +9,7 @@ JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_SRL_create
 (JNIEnv * env, jclass obj, jstring model_path){
   const char * str = env->GetStringUTFChars( model_path , 0);
   std::string path(str);
-  int tag = SRL_LoadResource(path);
+  int tag = srl_load_resource(path);
   env->ReleaseStringUTFChars( model_path, str); 
   if(0==tag) {
     return 1;
@@ -89,7 +89,7 @@ JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_SRL_srl
     parsers.push_back(make_pair(heads.at(i),deprels.at(i)));
   }
 
-  int len = DoSRL(words,tags,ners,parsers,srls);
+  int len = srl_dosrl(words,tags,parsers,srls);
 
   if(len<0)
     return -1;
@@ -118,6 +118,6 @@ JNIEXPORT jint JNICALL Java_edu_hit_ir_ltp4j_SRL_srl
 
 JNIEXPORT void JNICALL Java_edu_hit_ir_ltp4j_SRL_release
 (JNIEnv * env, jclass obj){
-	SRL_ReleaseResource();
+	srl_release_resource();
 }
 
